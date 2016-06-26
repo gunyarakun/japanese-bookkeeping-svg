@@ -64,10 +64,10 @@ text {
 }
 ```
 
-Execute.
+Execute. Set `-w 2000` for changing image size to make resolutions up.
 
 ```bash
-java -jar batik-1.8/batik-rasterizer-1.8.jar -w 2400 -cssUser user.css out.svg
+java -jar batik-1.8/batik-rasterizer-1.8.jar -w 2000 -cssUser user.css out.svg
 ```
 
 ## License
