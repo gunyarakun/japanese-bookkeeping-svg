@@ -6,6 +6,8 @@
 
 Generate SVG files for Japanese style bookkeeping diagrams.
 
+:warning: This SVG uses `textLength` attritube which is not be supported by some SVG viewer. Use [Firefox](https://www.mozilla.org/en-US/firefox/products/), [Batik](https://xmlgraphics.apache.org/batik/), etc.
+
 ## Usage
 
 ```
