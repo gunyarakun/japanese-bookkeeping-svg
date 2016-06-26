@@ -34,9 +34,10 @@ module JapaneseBookkeepingSVG
 
     def text(x, y, text, style = {}) # rubocop:disable Metrics/MethodLength,Metrics/AbcSize
       s = style.clone
-      max_width = self.class.convert_unit(s['textLength'])
-      attrs = ['font-family', 'font-size', 'text-anchor', 'textLength', 'lengthAdjust', 'xml:space'].map do |attr|
+      attrs = {}
+      attrs_str = ['font-family', 'font-size', 'text-anchor', 'textLength', 'lengthAdjust', 'xml:space'].map do |attr|
         if s.key?(attr)
+          attrs[attr] = s[attr]
           %( #{attr}="#{s.delete attr}")
         else
           ''
@@ -44,7 +45,7 @@ module JapaneseBookkeepingSVG
       end.join('')
 
       text_lines = []
-      text_lines << %(<text x="#{x}" y="#{y}"#{attrs}#{style_attr(s)}>)
+      text_lines << %(<text x="#{x}" y="#{y}"#{attrs_str}#{style_attr(s)}>)
       max_width_em = 0
       height_em = 0
       dy = 0
@@ -58,8 +59,15 @@ module JapaneseBookkeepingSVG
       text_lines << '</text>'
       @output << text_lines.join('')
 
-      max_width ||= self.class.convert_unit("#{max_width_em}em")
-      max_x = x + max_width
+      max_width = self.class.convert_unit(attrs['textLength'] || "#{max_width_em}em")
+      case attrs['text-anchor']
+      when nil, 'start'
+        max_x = x + max_width
+      when 'middle'
+        max_x = x + max_width / 2
+      when 'end'
+        max_x = x
+      end
       max_y = y + self.class.convert_unit("#{height_em}em")
       update_max_width_and_height(max_x, max_y)
     end

@@ -16,7 +16,7 @@ class BasicTest < Minitest::Test
     assert_equal <<SVG.chomp, svg.to_s
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="670" height="48" version="1.1" xmlns="http://www.w3.org/2000/svg">
+<svg width="590" height="48" version="1.1" xmlns="http://www.w3.org/2000/svg">
 <text x="0" y="16"><tspan x="0" dy="0em">(</tspan></text>
 <text x="15" y="16" textLength="125" lengthAdjust="spacing"><tspan x="15" dy="0em">現金預金</tspan></text>
 <text x="150" y="16"><tspan x="150" dy="0em">)</tspan></text>
@@ -49,7 +49,7 @@ SVG
     assert_equal <<SVG.chomp, svg.to_s
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="686" height="120" version="1.1" xmlns="http://www.w3.org/2000/svg">
+<svg width="600" height="120" version="1.1" xmlns="http://www.w3.org/2000/svg">
 <text x="300" y="16" text-anchor="middle" textLength="145"><tspan x="300" dy="0em">現金預金</tspan></text>
 <line x1="0" y1="24" x2="600" y2="24" stroke="black" stroke-width="1" />
 <text x="15" y="45" textLength="125" lengthAdjust="spacing"><tspan x="15" dy="0em">資本金</tspan></text>
