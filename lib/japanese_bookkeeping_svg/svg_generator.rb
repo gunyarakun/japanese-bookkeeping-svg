@@ -1,5 +1,5 @@
 module JapaneseBookkeepingSVG
-  class SVGGenerator
+  class SVGGenerator # rubocop:disable Metrics/ClassLength
     def initialize(&block)
       @output = []
       @max_width = 0
@@ -32,7 +32,7 @@ module JapaneseBookkeepingSVG
       update_max_width_and_height(x2, y2)
     end
 
-    def text(x, y, text, style = {}) # rubocop:disable Metrics/MethodLength,Metrics/AbcSize
+    def text(x, y, text, style = {}) # rubocop:disable Metrics/MethodLength,Metrics/AbcSize,Metrics/CyclomaticComplexity
       s = style.clone
       attrs = {}
       attrs_str = ['font-family', 'font-size', 'text-anchor', 'textLength', 'lengthAdjust', 'xml:space'].map do |attr|
