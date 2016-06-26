@@ -26,7 +26,7 @@ module JapaneseBookkeepingSVG
 
     def text(x, y, text, style={})
       s = style.clone
-      width = s['textLength']
+      max_width = convert_unit(s['textLength'])
       attrs = ['font-family', 'font-size', 'textLength', 'xml:space'].map do |attr|
         if s.has_key?(attr)
           %Q[ #{attr}="#{s.delete attr}"]
@@ -50,8 +50,10 @@ module JapaneseBookkeepingSVG
       text_lines << '</text>'
       @output << text_lines.join('')
 
-      width ||= max_width_em * 16
-      update_max_width_and_height(x + width, y + height_em * 16)
+      max_width ||= convert_unit("#{max_width_em}em")
+      max_x = x + max_width
+      max_y = y + convert_unit("#{height_em}em")
+      update_max_width_and_height(max_x, max_y)
     end
 
     private
@@ -78,6 +80,30 @@ EOT
 
     def push_footer
       @output << '</svg>'
+    end
+
+    def convert_unit(length)
+      return nil if length.nil?
+      m = /\A(\d+)(em|ex|px|in|cm|mm|pt|pc)?\z/.match(length.to_s)
+      raise ArgumentError, "Unknown length #{length}" unless m
+      v = m[1].to_i
+      return v if m[2].nil?
+      case m[2].intern
+      when :em, :ex
+        v * 16
+      when :px
+        v
+      when :in
+        v * 96
+      when :cm
+        (v * 96) / 2.54
+      when :mm
+        (v * 96) / 25.4
+      when :pt
+        (v * 4).fdiv(3)
+      when :pc
+        v * 16
+      end
     end
   end
 end

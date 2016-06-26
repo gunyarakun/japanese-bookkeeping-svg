@@ -2,7 +2,7 @@ require_relative 'japanese-bookkeeping-svg/svg_generator'
 require_relative 'japanese-bookkeeping-svg/gem_version'
 
 module JapaneseBookkeepingSVG
-  def self.journalization(debits, credits, date=nil)
+  def self.journalization(debits, credits)
     # check amount
     # draw svg
     SVGGenerator.new do
@@ -30,6 +30,9 @@ module JapaneseBookkeepingSVG
         text(580, y, "#{JapaneseBookkeepingSVG.delimited_number(value)}", value_style)
       end
     end
+  end
+
+  def self.t_accounts(account, debits, credits)
   end
 
   def self.delimited_number(number)
