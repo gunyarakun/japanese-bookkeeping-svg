@@ -6,20 +6,28 @@ module JapaneseBookkeepingSVG
     # check amount
     # draw svg
     SVGGenerator.new do
-      style = {
-        'textLength' => 180
+      key_style = {
+        'textLength' => 145,
+#        'xml:space' => 'preserve'
+      }
+      value_style = {
+        'text-anchor' => 'end'
       }
       y = 0
       debits.map do |key, value|
         y += 16
-        text(0, y, "(#{key})", style)
-        text(200, y, "#{JapaneseBookkeepingSVG.delimited_number(value)}")
+        text(0, y, '(')
+        text(15, y, "#{key}", key_style)
+        text(170, y, ')')
+        text(280, y, "#{JapaneseBookkeepingSVG.delimited_number(value)}", value_style)
       end
       y = 0
       credits.map do |key, value|
         y += 16
-        text(400, y, "(#{key})", style)
-        text(600, y, "#{JapaneseBookkeepingSVG.delimited_number(value)}")
+        text(300, y, '(')
+        text(315, y, "#{key}", key_style)
+        text(470, y, ')')
+        text(580, y, "#{JapaneseBookkeepingSVG.delimited_number(value)}", value_style)
       end
     end
   end

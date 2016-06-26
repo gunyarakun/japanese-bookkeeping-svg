@@ -27,7 +27,7 @@ module JapaneseBookkeepingSVG
     def text(x, y, text, style={})
       s = style.clone
       width = s['textLength']
-      attrs = ['font-family', 'font-size', 'textLength'].map do |attr|
+      attrs = ['font-family', 'font-size', 'textLength', 'xml:space'].map do |attr|
         if s.has_key?(attr)
           %Q[ #{attr}="#{s.delete attr}"]
         else
@@ -35,18 +35,20 @@ module JapaneseBookkeepingSVG
         end
       end.join('')
 
-      @output << %Q[<text x="#{x}" y="#{y}"#{attrs} style="#{style_attr(s)}">]
+      text_lines = []
+      text_lines << %Q[<text x="#{x}" y="#{y}"#{attrs} style="#{style_attr(s)}">]
       max_width_em = 0
       height_em = 0
       dy = 0
       text.each_line do |line|
         line.chomp!
-        @output << %Q[<tspan x="#{x}" dy="#{dy}em">#{line}</tspan>]
+        text_lines << %Q[<tspan x="#{x}" dy="#{dy}em">#{line}</tspan>]
         dy = 1
         max_width_em = line.size if line.size > max_width_em
         height_em += 1
       end
-      @output << '</text>'
+      text_lines << '</text>'
+      @output << text_lines.join('')
 
       width ||= max_width_em * 16
       update_max_width_and_height(x + width, y + height_em * 16)
