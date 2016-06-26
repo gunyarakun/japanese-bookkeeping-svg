@@ -10,7 +10,7 @@ Generate SVG files for Japanese style bookkeeping diagrams.
 
 ## Usage
 
-```
+```bash
 gem install japanese-bookkeeping-svg
 ```
 
@@ -51,6 +51,23 @@ File.open('t-accounts.svg', 'w') do |file|
     },
   ).to_s
 end
+```
+
+## Conversion to PNG with Batik
+
+Make `user.css`.
+
+```css
+text {
+  font-size: 16px;
+  font-family: "ヒラギノ明朝 ProN W6", "HiraMinProN-W6";
+}
+```
+
+Execute.
+
+```bash
+java -jar batik-1.8/batik-rasterizer-1.8.jar -w 2400 -cssUser user.css out.svg
 ```
 
 ## License
