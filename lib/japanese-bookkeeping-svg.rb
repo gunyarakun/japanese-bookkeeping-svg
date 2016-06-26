@@ -1,5 +1,5 @@
-require_relative 'japanese-bookkeeping-svg/svg_generator'
-require_relative 'japanese-bookkeeping-svg/gem_version'
+require_relative 'japanese_bookkeeping_svg/svg_generator'
+require_relative 'japanese_bookkeeping_svg/gem_version'
 
 module JapaneseBookkeepingSVG
   @@line_height = SVGGenerator.convert_unit('1em') # rubocop:disable Style/ClassVars
