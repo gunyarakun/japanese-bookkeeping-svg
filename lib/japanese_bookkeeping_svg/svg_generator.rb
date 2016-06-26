@@ -35,7 +35,7 @@ module JapaneseBookkeepingSVG
     def text(x, y, text, style = {}) # rubocop:disable Metrics/MethodLength,Metrics/AbcSize
       s = style.clone
       max_width = self.class.convert_unit(s['textLength'])
-      attrs = ['font-family', 'font-size', 'text-anchor', 'textLength', 'xml:space'].map do |attr|
+      attrs = ['font-family', 'font-size', 'text-anchor', 'textLength', 'lengthAdjust', 'xml:space'].map do |attr|
         if s.key?(attr)
           %( #{attr}="#{s.delete attr}")
         else

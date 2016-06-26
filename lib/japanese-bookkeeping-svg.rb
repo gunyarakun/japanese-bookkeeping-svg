@@ -17,7 +17,8 @@ module JapaneseBookkeepingSVG
   def self.account_value(svg, x, y, journals, with_brackets) # rubocop:disable Metrics/MethodLength
     key_style = {
       'textLength' => 125,
-      #      'xml:space' => 'preserve'
+      'lengthAdjust' => 'spacing',
+      # 'xml:space' => 'preserve'
     }
     sum_value = 0
     journals.map do |key, value|
