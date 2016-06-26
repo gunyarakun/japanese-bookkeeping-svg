@@ -1,5 +1,9 @@
 # japanese-bookkeeping-svg
 
+[![Build Status](https://travis-ci.org/gunyarakun/japanese-bookkeeping-svg.svg?branch=master)](https://travis-ci.org/gunyarakun/japanese-bookkeeping-svg)
+[![Gem Version](https://badge.fury.io/rb/japanese-bookkeeping-svg.svg)](https://badge.fury.io/rb/japanese-bookkeeping-svg)
+![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)
+
 Generate SVG files for Japanese style bookkeeping diagrams.
 
 ## Usage
