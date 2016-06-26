@@ -65,8 +65,8 @@ module JapaneseBookkeepingSVG
         line(15, y, 300, y, line_style)
         line(460, y, 600, y, line_style)
       elsif debits_y > credits_y
-        line(160, y, 300, y, line_style)
         y = debits_y + 8
+        line(160, y, 300, y, line_style)
         line(315, y, 440, credits_y + 8, line_style)
         line(315, y, 600, y, line_style)
       else # eq
