@@ -1,14 +1,15 @@
+# rubocop:disable Metrics/MethodLength
 require 'test_helper'
 
 class BasicTest < Minitest::Test
   def test_journalization
     svg = JapaneseBookkeepingSVG.journalization(
-      debit={
-        '現金預金': 4000
+      {
+        現金預金: 4000
       },
-      credit={
-        '売上': 2000,
-        '売掛金': 2000
+      {
+        売上: 2000,
+        売掛金: 2000
       }
     )
 
@@ -35,13 +36,13 @@ SVG
   def test_t_accounts
     svg = JapaneseBookkeepingSVG.t_accounts(
       '現金預金',
-      debit={
-        '資本金': 10000
+      {
+        資本金: 10_000
       },
-      credit={
-        '仕入': 2000,
-        '通信費': 500,
-        '次月繰越': 7500
+      {
+        仕入: 2000,
+        通信費: 500,
+        次月繰越: 7500
       }
     )
 

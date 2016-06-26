@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   spec.description = %(
     A pure Ruby library to generate SVG images for Japanese bookkeeping.
   ).strip.gsub(/\s+/, ' ')
-  spec.homepage     = 'https://github.com/gunyarakun/japanese-bookkeeping-svg'
+  spec.homepage = 'https://github.com/gunyarakun/japanese-bookkeeping-svg'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
