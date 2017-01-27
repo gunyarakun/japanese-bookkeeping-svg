@@ -42,13 +42,13 @@ File.open('t-accounts.svg', 'w') do |file|
     '現金預金',
     debits={
       資本金: 10000
-    }
+    },
     credits={
       仕入: 2000,
       普通預金: 1234,
       諸口: 3456,
       次月繰越: 3310
-    },
+    }
   ).to_s
 end
 ```
